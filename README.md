@@ -14,7 +14,7 @@ scraping is not artificially delayed.
 ## Setup
 
 ```powershell
-cd "C:\Users\mrpro\OneDrive\Documents\Default Project\offertoday-bot"
+cd "C:\Users\USERNAME\\Documents\Default Project\offertoday-bot"
 pip install -r requirements.txt
 python -m playwright install chromium
 ```

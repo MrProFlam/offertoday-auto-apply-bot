@@ -116,3 +116,17 @@ Root: `C:\Users\mrpro\OneDrive\Documents\Default Project\offertoday-bot`
    first to avoid a file lock).
 3. Test the EXE on a machine without Python/internet-then-online to confirm the
    Desktop folder creation and automatic browser download work end to end.
+
+## 5. How future sessions get this context
+
+- `AGENTS.md` (this file) lives in the project root and is loaded automatically by
+  OpenCode when a session's working directory is this folder. A brand-new session
+  opened here already knows the goal, files, status, and next steps.
+- Skills are separate, user-level instruction sets in `~/.config/opencode/skills`.
+  `project-docs` guides creating/updating files like this one; `github-publish`
+  guides safe uploads to GitHub. They load only when the request matches, and are
+  available in every project.
+- Skills do not create files by themselves, and they do not carry project context —
+  this file does. Keep it updated after major changes (ask to "update AGENTS.md").
+- If a session is opened in a different folder, this context is not loaded; set the
+  working directory to this project first.

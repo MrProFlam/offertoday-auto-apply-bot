@@ -99,3 +99,11 @@ works exactly as before.
   changes its UI, that is the file to update (the debug log helps).
 - If login ever requires a one-time code, the bot pauses and asks you to enter it
   manually in the browser window.
+
+## Working with AI assistants
+
+`AGENTS.md` in this folder is the project brief for AI assistants: it lists the goal,
+every file, what is verified working, and the remaining tasks. OpenCode loads it
+automatically when a session is opened with this folder as the working directory,
+so a new session already understands the project. Keep it updated after big changes
+by asking the assistant to "update AGENTS.md".

@@ -1,0 +1,49 @@
+# ---------------------------------------------------------------------------
+# OfferToday auto-apply bot configuration
+# Secrets go in .env (see .env.example), never in this file.
+# ---------------------------------------------------------------------------
+
+browser:
+  headless: false          # keep visible so you can intervene at login/captcha
+  slow_mo: 0
+
+# Job sources. Scraping uses the site's JSON API (fast + structured).
+search:
+  base_url: "https://www.offertoday.com"            # API origin (do not change)
+  search_url: "https://www.offertoday.com/en/recommend/jobs-Part-Time/t2"  # your part-time listing page
+  # No category restriction - scan every category.
+  job_function_codes: []
+  employment_types: [2]   # 2 = Part Time
+  keyword: ""
+  page_size: 10          # API caps each response at 10
+  max_pages: 5           # ~50 part-time jobs per run
+  # If true, visit each job page to read the full description for keyword filtering.
+  fetch_job_details: false
+
+filters:
+  keywords_include: []      # e.g. ["Python", "Data", "IT"] - any match wins
+  keywords_exclude: []      # e.g. ["commission", "part time"] - any match drops
+  min_salary_hkd: 70         # 0 = no minimum
+  include_unknown_salary: false
+  locations: []             # e.g. ["Hong Kong", "Kowloon", "Tsim Sha Tsui"]
+
+limits:
+  max_applications_per_run: 30
+  max_consecutive_failures: 3
+
+# Randomized 3-5 second pause, re-rolled before EVERY apply/chat action.
+# Scraping is intentionally NOT delayed.
+delays:
+  apply_action: [3.0, 5.0]
+  speed_multiplier: 1.0
+
+# Which CV to pick in the "Select a resume" dialog (substring match).
+# Leave empty to use the first resume listed (currently "Parmesh CV.pdf").
+resume_filename_contains: ""
+
+# Message sent to the recruiter after applying. Replace with your own template.
+follow_up_message: "Hello is this position still avaliable?"
+
+# If the bot cannot recognise a UI step, pause so you can finish it in the
+# visible browser window, then press Enter to continue.
+assist_on_unknown_dialog: true
